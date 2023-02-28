@@ -20,7 +20,6 @@ export default function Chat({ socket, userId }) {
   useEffect(() => {
     socket.on("receiveMessage", (data) => {
       setReceivedMessage((prev) => [...prev, data]);
-      socket.emit("setMessage", data);
     });
   }, [socket]);
 

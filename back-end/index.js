@@ -84,22 +84,7 @@ io.on("connection", (socket) => {
       socket.emit("currRoom", room);
     }
   });
-  socket.on("setMessage", async (data) => {
-    const { to, from } = data;
-    const isData = await chatHistory.findOne({ key: `${to}${from}` });
-    if (isData) {
-      isData.chatData.push(data);
-      await isData.save();
-    } else {
-      const newUser = new chatHistory({
-        key: `${to}${from}`,
-        chatData: [],
-      });
-      newUser.chatData.push(data);
-      await newUser.save();
-    }
-  });
-  
+
   socket.on("sendMessage", async (data) => {
     const room = `${data.room}`;
     const { to, from } = data;
@@ -116,6 +101,19 @@ io.on("connection", (socket) => {
       await newUser.save();
     }
     data.key = "receive";
+
+    const isDataPre = await chatHistory.findOne({ key: `${to}${from}` });
+    if (isDataPre) {
+      isDataPre.chatData.push(data);
+      await isDataPre.save();
+    } else {
+      const newUser = new chatHistory({
+        key: `${to}${from}`,
+        chatData: [],
+      });
+      newUser.chatData.push(data);
+      await newUser.save();
+    }
     socket.to(room).emit("receiveMessage", data);
   });
 
