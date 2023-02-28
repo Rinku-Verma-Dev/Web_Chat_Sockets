@@ -1,0 +1,32 @@
+* {
+  padding: 0%;
+  margin: 0%;
+}
+.d-flex {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.container {
+  width: 100vw;
+  height: 100vh;
+  background-color: #b1d4e0;
+}
+.login-container,
+.login-container form {
+  gap: 10px;
+  flex-direction: column;
+}
+.login-container {
+  padding: 40px;
+  border-radius: 100vh;
+  box-sizing: border-box;
+  background-color: white;
+}
+.login-container:hover {
+  box-shadow: 0px 0px 50px 2px #2e8bc0;
+}
+.login-form input {
+  box-sizing: content-box;
+  padding-left: 5px;
+}

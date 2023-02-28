@@ -1,0 +1,12 @@
+.profile {
+  margin-bottom: 10px;
+}
+
+.profile-sm {
+  border-radius: 40vw;
+  padding: 5px;
+  width: 20px;
+  height: 20px;
+  background-color: rgb(0, 183, 255);
+  margin-right: 10px;
+}
